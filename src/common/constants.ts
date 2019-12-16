@@ -1,6 +1,6 @@
 "user strict";
 
 export class Constants {
-    public static ExtensionId = "formulahendry.vscode-mysql";
+    public static ExtensionId = "alexc155.vscode-mysql";
     public static GlobalStateMySQLConectionsKey = "mysql.connections";
 }

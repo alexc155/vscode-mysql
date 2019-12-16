@@ -1,6 +1,5 @@
 "use strict";
 import * as vscode from "vscode";
-import { AppInsightsClient } from "./common/appInsightsClient";
 import { Utility } from "./common/utility";
 import { ConnectionNode } from "./model/connectionNode";
 import { DatabaseNode } from "./model/databaseNode";
@@ -9,13 +8,11 @@ import { TableNode } from "./model/tableNode";
 import { MySQLTreeDataProvider } from "./mysqlTreeDataProvider";
 
 export function activate(context: vscode.ExtensionContext) {
-    AppInsightsClient.sendEvent("loadExtension");
 
     const mysqlTreeDataProvider = new MySQLTreeDataProvider(context);
     context.subscriptions.push(vscode.window.registerTreeDataProvider("mysql", mysqlTreeDataProvider));
 
     context.subscriptions.push(vscode.commands.registerCommand("mysql.refresh", (node: INode) => {
-        AppInsightsClient.sendEvent("refresh");
         mysqlTreeDataProvider.refresh(node);
     }));
 
